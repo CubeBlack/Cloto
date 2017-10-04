@@ -1,1 +1,0 @@
-Exibir dados mais relevantes
