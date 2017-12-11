@@ -1,0 +1,41 @@
+*{
+	margin:0;
+}
+body{
+	border:none;
+	background-color:blue;
+}
+code{
+	white-space:pre;
+}
+#menu,#content,header,footer{
+	position:absolute;
+	background-color:white;
+	border: none;
+}
+#menu,#content{
+	top:50px;
+	height:calc(100% - 65px);
+}
+#menu{
+	left:0;
+	width:calc(20% - 1px);
+}
+#content{
+	right:0;
+	width:calc(80% - 1px);
+}
+#menu a{
+	cursor:pointer;
+}
+
+#menu a:hover{
+	color:red;
+}
+header,footer{
+	width:100%;
+}
+footer{
+	bottom:0;
+}
+
