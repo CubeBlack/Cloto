@@ -61,6 +61,7 @@
 			$this->com->params = $params;
 			$this->com->nodes = $nodes;
 			//var_dump($this->com);
+			//echo $this->com->params[0];
 		}
 		function call(){
 			//---------------------

@@ -30,6 +30,7 @@ $help =
 	$config->help()."\n".
 	$dbl->help()."\n".
 	$user->help()."\n".
+	$dado->help()."\n".
 	
 	"_____________"
 ;
@@ -38,5 +39,5 @@ function termVars(){
 }
 //array com asas variaveis que poderam ser acesadas pelo terminal
 //por enquanto sem restrição de usuario
-$vars = array("config","user","dado","db");
+$vars = array("config","user","dado","db","help");
 $term = New Terminal($vars);

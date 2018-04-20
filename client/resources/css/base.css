@@ -3,6 +3,10 @@
 	padding:0;
 	display:normal;
 }
+a:hover{
+	color:green;
+	cursor:pointer;
+}
 body{
 	margin-top:50px;
 	margin-bottom:50px;
@@ -17,8 +21,8 @@ header{
 }
 dado{
 	display:block;
-	height:300px;
-	width:150px;
+	min-height:80px;
+	min-width:80px;
 	padding:1px;
 	margin:2px;
 	float:left;
@@ -30,16 +34,26 @@ dado valor{
 	display:block;
 	border-radius:5px;
 	border: 1px solid black;
+	min-height:50px;
+	overflow:hiden;
+	white-space:pre;
 }
+/*
 dado valor:hover{
 	overflow:scroll;
+	white-space:pre-wrap;
 }
+*/
 dado tag{
 	color:blue;
 }
 dado tag:hover{
 	color:red;
 	cursor:pointer;
+}
+dado editar{
+	display: block;
+	/*white-space:*/
 }
 .submenu{
 	position:fixed;

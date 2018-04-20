@@ -4,8 +4,8 @@ class Terminal{
 	this.receved = "";
 	//---------- config
 	//servidor de testes, para offline
-	this.server = ""
-	this.workerUrl = "http://localhost/GitHub/Teminal/terminal_v1.worker.js";
+	this.server = "http://cloto/server/server-terminal.php";
+	this.workerUrl = "http://cloto/client/resources/js/terminal_v1.1worker.js";
 
 	this.send_pre = "";
 	this.send_pos = "";
@@ -17,6 +17,7 @@ class Terminal{
 	};
 	//---------------------------
 	com (comander,retorno){
+		comander = this.encode(comander);
 		this.send(comander,retorno);
 	}
 	send (comander,retorno){
@@ -32,6 +33,17 @@ class Terminal{
 			retorno(event.data);
 		}
 		//return this.receved;
+	}
+	encode(str){
+		var nStr = "";
+		for(var a = 0; a < str.length;a++){
+			if(str[a]== "\n") {
+				nStr += "%0";
+				continue;
+			}
+			nStr += str[a];
+		}
+		return nStr;
 	}
 }
 console.log("terminal_v1.1.class.js");
