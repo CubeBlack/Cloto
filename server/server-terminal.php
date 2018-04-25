@@ -7,7 +7,7 @@
 	}
 	$comStr = $_REQUEST["comander"];
 	if($comStr == ""){
-		echo "Cloto Server. \n";
+		echo "-------------  Cloto Server  ------------- \n";
 		echo "Bem vindo {$user->nick}!\n";
 		echo "help, Para obter ajuda";
 		goto fim;

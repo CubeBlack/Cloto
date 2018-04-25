@@ -1,3 +1,3 @@
 <?php
-$str = "a\na\n\n\n\n\\n\n\n";
+$str = ",,,,,,,,";
 echo urlencode($str);

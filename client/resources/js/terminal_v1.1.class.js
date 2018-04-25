@@ -5,7 +5,7 @@ class Terminal{
 	//---------- config
 	//servidor de testes, para offline
 	this.server = "http://cloto/server/server-terminal.php";
-	this.workerUrl = "http://cloto/client/resources/js/terminal_v1.1worker.js";
+	this.workerUrl = "";
 
 	this.send_pre = "";
 	this.send_pos = "";
@@ -13,14 +13,16 @@ class Terminal{
 	this.receved_pre = "";
 	this.receved_pos = "";
 	//-------------
-	this.wRequest = new Worker(this.workerUrl);
+	
 	};
 	//---------------------------
 	com (comander,retorno){
+		//for();
 		comander = this.encode(comander);
 		this.send(comander,retorno);
 	}
 	send (comander,retorno){
+		console.log(this.wRequest);
 		if(term.server == "")
 			return "Servidor n'ao reconhecido";
 		
@@ -34,11 +36,21 @@ class Terminal{
 		}
 		//return this.receved;
 	}
+	on(){
+		if(this.workerUrl==""){
+			console.log("Terminal.workerUrl nao defino");
+		}
+		this.wRequest = new Worker(this.workerUrl);
+	}
 	encode(str){
 		var nStr = "";
 		for(var a = 0; a < str.length;a++){
 			if(str[a]== "\n") {
 				nStr += "%0";
+				continue;
+			}
+			if(str[a]==","){
+				nStr += "%2C";
 				continue;
 			}
 			nStr += str[a];

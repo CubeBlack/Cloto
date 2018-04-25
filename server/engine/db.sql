@@ -12,7 +12,7 @@ INSERT INTO `ks_user` (`id`, `nick`, `email`, `senha`) VALUES (1, 'asdf', 'asdf@
 DROP TABLE IF EXISTS `ks_dados`;
 CREATE TABLE IF NOT EXISTS `ks_dados` (
   `id` int(8) NOT NULL AUTO_INCREMENT,
-  `dado` text NOT NULL,
+  `dado` BLOB NOT NULL,
   `tag` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;

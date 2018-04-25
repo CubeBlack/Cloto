@@ -1,10 +1,4 @@
 <?php
-
-// ___________ exibir ou não os erros do sistema
-//ini_set('display_errors',1);
-//ini_set('display_startup_erros',1);
-//error_reporting(E_ALL);
-
 function __autoload($className){
   $url = "engine/$className.class.php";
   require_once $url;
@@ -24,19 +18,17 @@ try {
 
 $user = new User();
 
-$help = 
-	"___ HELP ___\n"."\n".
-	
-	$config->help()."\n".
-	$dbl->help()."\n".
-	$user->help()."\n".
-	$dado->help()."\n".
-	
-	"_____________"
-;
-function termVars(){
-	global $config;
-}
+$help = "
+_________________________
+* help
+* Config: Configurações do sistema
+* User: usario
+* dado:
+* db:
+
+obs.: Para obter ajuda de um objeto especifico, basta digitar a função padrão 'help'. Por exemplo 'user.help()'.
+_________________________
+";
 //array com asas variaveis que poderam ser acesadas pelo terminal
 //por enquanto sem restrição de usuario
 $vars = array("config","user","dado","db","help");

@@ -3,16 +3,20 @@
 		<title>Cloto</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="resources/css/base.css">
-		<script src="resources\js\terminal_v1.1.class.js" charset="utf-8"></script>
+		<script src="http://github/Teminal/v002.0/terminal_v2.0.class.js" charset="utf-8"></script>
 		<script src="resources/js/page.js" charset="utf-8"></script>
 		<script src="resources/js/newNota.js" charset="utf-8"></script>
-		
+		<script src="resources/js/edit.js" charset="utf-8"></script>
+		<script src="resources/js/search.js" charset="utf-8"></script>
 	</head>
 	<body onload="page.loaded()">
 		<header>
-			Cloto
+			Cloto  - <span id="aSearch">aSearch</span>
+			
 			<nav>
-				menu
+			<a onclick="page.setQuery('');">Clear</a>
+				<input type="text" id="searchInput">
+				<input type="button" onclick="page.iSearch()" value="pesquisar">
 			</nav>
 		</header>
 		<section id="content" >
