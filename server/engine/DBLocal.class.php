@@ -12,25 +12,25 @@ class DBLocal
     if(!isset($_SESSION))
       session_start();
 
-	if(!isset($_SESSION["k-slayer"]))
+	if(!isset($_SESSION["cloto"]))
 		$this->clear();
 	
-	$this->data = $_SESSION["k-slayer"];
+	$this->data = $_SESSION["cloto"];
   }
 	public function set($index,$valor){
-		$_SESSION["k-slayer"][$index] = $valor;
+		$_SESSION["cloto"][$index] = $valor;
 		return "ok";
 	}
 	public function get($index=""){
 		if($index == ""){
-			return $_SESSION["k-slayer"];
+			return $_SESSION["cloto"];
 		}
-		if(isset($_SESSION["k-slayer"][$index]))
-			return $_SESSION["k-slayer"][$index];
+		if(isset($_SESSION["cloto"][$index]))
+			return $_SESSION["cloto"][$index];
 		return false;
 	}
   public function clear(){
-	$_SESSION["k-slayer"] = array();
+	$_SESSION["cloto"] = array();
 	return "ok";
   }
 	//---------- help ---------------//

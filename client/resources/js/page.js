@@ -7,11 +7,11 @@ page.loaded = function(){
 	term = new Terminal();
 	sTerm = new Terminal();
 	
-	term.server = "http://github/Cloto/server/server-terminal.php";
-	term.workerUrl = "http://github/Teminal/v002.0/terminal_v1.1worker.js";
+	term.server = "https://localhost/Cloto/server/server-terminal.php";
+	term.workerUrl = "https://localhost/Teminal/v002.0/terminal_v1.1worker.js";
 	
-	sTerm.server = "http://github/Cloto/server/server-terminal.php";
-	sTerm.workerUrl = "http://github/Teminal/v002.0/terminal_v1.1worker.js";
+	sTerm.server = "https://localhost/Cloto/server/server-terminal.php";
+	sTerm.workerUrl = "https://localhost/Teminal/v002.0/terminal_v1.1worker.js";
 	
 	sTerm.on();
 	term.on();
@@ -21,12 +21,13 @@ page.loaded = function(){
 //- - - - - PopUp
 page.checkPop = false;
 page.popUp = function(){
+	console.log("pop");
 	this.checkPop = !this.checkPop;
 	if(this.checkPop){
-		document.getElementById("popUp").style = "display:block;";
+		document.getElementById("popUp").className = "popUP-true";
 	}
 	else{
-		document.getElementById("popUp").style = "display:none;";
+		document.getElementById("popUp").className = "popUP-false";
 	}
 
 }
@@ -41,6 +42,6 @@ page.drop = function(id){
 page.rDrop = function(msg){
 	console.log(msg);
 }	
-page.notaform = "<div id=\"fNotaCabecario\"></div><form><label>Dado</label><textarea id=\"fNotaDado\"></textarea><label>Tags</label><textarea id=\"fNotaTag\"></textarea><input id=\"fNotaAplic\" onclick=\"\" value=\"Salvar\" type=\"button\"></form>";
+page.notaform = "<div id=\"fNotaCabecario\"></div><form><label>Dado</label><textarea id=\"fNotaDado\"></textarea><label>Tags</label><textarea id=\"fNotaTag\"></textarea><input id=\"fNotaAplic\" onclick=\"\" value=\"Salvar\" type=\"button\"><input id=\"fNotaAplic\" onclick=\"page.popUp()\" value=\"Cancelar\" type=\"button\"></form>";
 page.loginform = "<form><label>Dado</label><textarea id=\"novaNotaDado\"></textarea><label>Tags</label><textarea id=\"novaNotaTag\"></textarea><input onclick=\"page.novaNotaAplic()\" value=\"Salvar\" type=\"button\"></form>";
 console.log("page.js");

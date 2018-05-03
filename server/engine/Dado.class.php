@@ -9,14 +9,14 @@ class Dado{
 			return false;
 		}
 		//$dado=urlencode($dado);
-		$sql = "INSERT INTO `ks_dados` (`dado`, `tag`) VALUES ('{$dado}', '{$tag}');";
+		echo $sql = "INSERT INTO `cloto_dados` (`dado`, `tag`) VALUES ('{$dado}', '{$tag}');";
 		$db->query($sql);
 		return "Ok";
 	}
 	function drop($id){
-		//DELETE FROM `ks_dados` WHERE `ks_dados`.`id` = 4
+		//DELETE FROM `cloto_dados` WHERE `cloto_dados`.`id` = 4
 		global $db;
-		$sql = "DELETE FROM `ks_dados` WHERE `ks_dados`.`id` = $id";
+		$sql = "DELETE FROM `cloto_dados` WHERE `cloto_dados`.`id` = $id";
 		$db->query($sql);
 		return "ok";
 		
@@ -24,7 +24,7 @@ class Dado{
 	function get($id,$tRetorno=""){
 		global $db;
 		$id = urlencode($id);
-		$sql = "SELECT * FROM `ks_dados` WHERE `id`='$id'";
+		$sql = "SELECT * FROM `cloto_dados` WHERE `id`='$id'";
 		
 		$retorno = $db->query($sql);
 		if(!$retorno){
@@ -53,15 +53,15 @@ class Dado{
 		$dado = urlencode($dado);
 		$tag = Tag::strToStr($tag);
 		$tag = urlencode($tag);
-		//UPDATE `ks_dados` SET `dado` = '* Criar o Repositorio para dominação.\r\n* Atulalizar repositorios.', `tag` = 'GitHub;Projetos;' WHERE `ks_dados`.`id` = 106;
-		$sql = "UPDATE `ks_dados` SET `dado` = '$dado', `tag` = '$tag' WHERE `ks_dados`.`id` = $id;";
+		//UPDATE `cloto_dados` SET `dado` = '* Criar o Repositorio para dominação.\r\n* Atulalizar repositorios.', `tag` = 'GitHub;Projetos;' WHERE `cloto_dados`.`id` = 106;
+		$sql = "UPDATE `cloto_dados` SET `dado` = '$dado', `tag` = '$tag' WHERE `cloto_dados`.`id` = $id;";
 		//$retorno = null;
 		$retorno = $db->query($sql);
 		return "ok";
 	}
 	function search($criterio="",$tRetorno=""){
 		global $db;
-		$sql = "SELECT * FROM `ks_dados`";
+		$sql = "SELECT * FROM `cloto_dados`";
 		if($criterio != ""){
 			$qTags = Tag::stringToTags($criterio);
 			$sql .=" WHERE tag like ";

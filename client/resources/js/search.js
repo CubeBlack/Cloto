@@ -11,11 +11,14 @@ page.search = function(){
 	
 }
 page.setQuery = function(query){
+	
 	page.query = query;
+	document.getElementById("searchInput").value = query;
 	console.log("Query='" + page.query + "'");
 }
 page.rSearch = function(msg){
-	page.search();
+	//setTimeout(page.search(),10000);
+	setInterval(page.search,1);
 	
 	if(page.respostaOld == msg){
 		page.SearchCount();
@@ -30,9 +33,12 @@ page.rSearch = function(msg){
 	resposta = "";
 	for(indice = 0; indice < dados.length; indice++){
 		resposta += "<dado>";
-			resposta += "<valor>";
+			resposta += "<id>";
 				resposta += dados[indice].id;
-				resposta += "<hr>";
+			resposta += "</id>";
+			
+			resposta += "<valor>";
+				
 				resposta += dados[indice].dado;
 			resposta += "</valor>";
 			resposta += "<tag>";
@@ -58,16 +64,13 @@ page.SearchCount = function(){
 	++page.searchN;
 	aLoading = ["-|||||||","|-||||||","||-|||||","|||-||||","||||-|||","|||||-||","||||||-|","|||||||-",];
 	searchlabel = "";
-	if(page.query == ""){
-		searchlabel += "All ";
-	}
-	else{
-		searchlabel += page.query;
-	}
 	searchlabel += "[";
 	searchlabel += aLoading[page.searchN%8];
 	searchlabel += "]"
 	if(page.searchN > 1000) page.searchN = 0;
 	
 	document.getElementById("aSearch").innerHTML = searchlabel;
+}
+page.iSearch = function(){
+	page.setQuery(document.getElementById("searchInput").value);
 }
