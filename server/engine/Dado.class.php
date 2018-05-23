@@ -1,7 +1,7 @@
 <?php
 class Dado{
 	function novo($dado="", $tag=""){
-		global $db;
+		global $db,$user;
 		$dado = urlencode($dado);
 		$tag = Tag::strToStr($tag);
 		$tag = urlencode($tag);
@@ -9,7 +9,7 @@ class Dado{
 			return false;
 		}
 		//$dado=urlencode($dado);
-		echo $sql = "INSERT INTO `cloto_dados` (`dado`, `tag`) VALUES ('{$dado}', '{$tag}');";
+		echo $sql = "INSERT INTO `cloto_dados` (`user`, `dado`, `tag`) VALUES ('{$user->id}','{$dado}', '{$tag}');";
 		$db->query($sql);
 		return "Ok";
 	}
@@ -70,38 +70,38 @@ class Dado{
 				if(sizeof($qTags)-1 != $i){
 					$sql .=" and ";
 				}
-				
 			}
 		}
 		$sql .=" ORDER by id DESC;";
-		//echo $sql;
-		
+
 		$retorno = $db->query($sql);
-		if(!$retorno){
-			return "Erro ao acessar banco de dados";
-		}
 		$retorno = $retorno->fetchAll();
-		if($tRetorno==""||$tRetorno=="array"){
-			return $retorno;
-		}
 		$retorno2 = array();
 		
 		foreach($retorno as $linha){
-			$nLinha["id"] = urldecode($linha["id"]);
-			$nLinha["dado"] = urldecode($linha["dado"]);
-			$nLinha["tag"] = Tag::stringToTags(urldecode($linha["tag"]));
-			$retorno2[] = $nLinha;
-		}
-		//var_dump($retorno2);;
-		if($tRetorno == "json"){
-			//$retorno["time"] = time();
+			//$nLinha["id"] = urldecode($linha["id"]);
+			//$nLinha["dado"] = urldecode($linha["dado"]);
+			//$nLinha["tag"] = Tag::stringToTags(urldecode($linha["tag"]));
 			
+			$retorno2[] = Dado::byBd($linha);
+		}
+		if($tRetorno==""||$tRetorno=="array"){
+			return $retorno2;
+		}
+		if($tRetorno == "json"){
 			$retorno2 = json_encode($retorno2);
 			return $retorno2;
 		}
-		//echo "aqui";
-		//return $tRetorno;
 		return "Enpty!";
+	}
+	static function byBd($row){
+		global $user;
+		$dado = array();
+		$dado["id"] = urldecode($row["id"]);
+		$dado["user"] = $user->get($row["user"]);
+		$dado["dado"] = urldecode($row["dado"]);
+		$dado["tag"] = Tag::stringToTags(urldecode($row["tag"]));
+	return $dado;
 	}
 	public function help(){
 		return <<<'EOT'

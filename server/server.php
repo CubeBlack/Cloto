@@ -6,6 +6,7 @@ function __autoload($className){
 // variaveis globais
 $config = new Config();
 $dbl = new DBLocal();
+$user = new User();
 $dado = new Dado();
 
 try {
@@ -16,7 +17,7 @@ try {
 }
 
 
-$user = new User();
+
 
 $help = "
 _________________________
@@ -31,5 +32,5 @@ _________________________
 ";
 //array com asas variaveis que poderam ser acesadas pelo terminal
 //por enquanto sem restrição de usuario
-$vars = array("config","user","dado","db","help");
+$vars = array("config","user","dado","db","dbl","help");
 $term = New Terminal($vars);

@@ -6,14 +6,26 @@
 		public $params;
 	}
 	Class Terminal{
-		function __construct($vars){
+		function __construct($vars,$noLog=array()){
 			$this->vars = $vars;
+			$this->noLog = $noLog;
 		}
 		function chamada($comStr){
 			$this->com = new TerminalComander();
 			$this->com->str = $comStr;
 			$this->pearce();
 			$this->call();
+		}
+		function setLog(){
+			$filename = 'engine/terminal.log';
+			if (!$handle = fopen($filename, 'a')) {
+				 echo "Não foi possível abrir o arquivo ($filename)";
+				 exit;
+			}
+			if (fwrite($handle, $this->com->str."\n") === FALSE) {
+				echo "Não foi possível escrever no arquivo ($filename)";
+			}
+			fclose($handle);
 		}
 		function pearce(){
 			$comStr = $this->com->str;
@@ -105,6 +117,7 @@
 			//echo $this->com->params[0];
 		}
 		function call(){
+			$this->setLog($this->com->str);
 			//---------------------
 			foreach($this->vars as $ar){
 				global ${$ar};

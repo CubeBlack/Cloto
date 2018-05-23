@@ -1,36 +1,43 @@
 <?php
 /**
- *
+ * erro ocacionado ao acessar em hppt: nao salva, mas roda de boa em https
  */
  //
 class DBLocal
 {
-	public $data;
+public $data;
   function __construct()
   {
+	
     global $config;
     if(!isset($_SESSION))
       session_start();
-
-	if(!isset($_SESSION["cloto"]))
+	if(!isset($_SESSION["m-cloto"]))
 		$this->clear();
-	
-	$this->data = $_SESSION["cloto"];
+	$this->data = $_SESSION["m-cloto"];
   }
 	public function set($index,$valor){
-		$_SESSION["cloto"][$index] = $valor;
+		$a = $_SESSION["m-cloto"];
+		$a[$index] = $valor;
+		$_SESSION["m-cloto"] = $a;
+		return "ok";
+	}
+	public function set2($index,$valor){
+		$a = $_SESSION["m-cloto"];
+		$a[$index] = $valor;
+		$_SESSION["m-cloto"] = $a;
 		return "ok";
 	}
 	public function get($index=""){
 		if($index == ""){
-			return $_SESSION["cloto"];
+			return $_SESSION["m-cloto"];
 		}
-		if(isset($_SESSION["cloto"][$index]))
-			return $_SESSION["cloto"][$index];
+		if(isset($_SESSION["m-cloto"][$index]))
+			return $_SESSION["m-cloto"][$index];
 		return false;
 	}
   public function clear(){
-	$_SESSION["cloto"] = array();
+	$_SESSION["m-cloto"] = array();
 	return "ok";
   }
 	//---------- help ---------------//
