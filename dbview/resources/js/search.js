@@ -3,6 +3,10 @@ page.respostaOld = "";
 page.searchN = 0;
 
 page.search = function(){
+	if(!user.logued){
+		user.formLogin();
+		return;
+	}
 	comStr= "";
 	comStr += "dado.search(strBegin\"";
 	comStr += page.query;
@@ -12,6 +16,7 @@ page.search = function(){
 page.setQuery = function(query){
 	page.query = query;
 	document.getElementById("searchInput").value = query;
+	page.search();
 	console.log("Query='" + page.query + "'");
 }
 page.rSearch = function(msg){
@@ -24,7 +29,7 @@ page.rSearch = function(msg){
 		return;
 	}
 	dados = JSON.parse(msg);
-	resposta = "";
+	resposta = page.tFirstDado;
 	for(indice = 0; indice < dados.length; indice++){
 		resposta += "<dado>";
 			resposta += "<id>";

@@ -1,0 +1,19 @@
+body{
+	padding:0;
+	margin:0;
+	text-align:center;
+}
+img{
+	height:calc(100% - 12px);
+	border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+img:hover{
+	background-color:red;
+}
+pop-up{
+	position:fixed;
+	top:0;
+	left:0;
+}

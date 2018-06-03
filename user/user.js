@@ -1,9 +1,8 @@
 user = [];
 user.logued = false;
 user.load = function(){
-	user.get();
+	document.getElementById("fNotaCabecario")
 }
-user.first = true;
 user.get = function(){
 	retorno = function(msg){
 		if(msg[0]!="{"){
@@ -16,20 +15,13 @@ user.get = function(){
 		user.poder = tUser.posder;
 		user.titulo	 = tUser.titulo;
 		
-		if(user.id == "0" ){
-			//document.getElementById("user-link").innerHTML = "Logar";
+		if(user.id == 0 ){
+			document.getElementById("user-link").innerHTML = "Logar";
 			user.logued = false;
+			return;
 		}
-		else{
-			user.logued = true;
-		}
-		
-		if(user.first){
-			user.first == false;
-			console.log("aqui");
-			page.search();
-		}
-		//document.getElementById("user-link").innerHTML = user.titulo + " " + user.nick;
+		user.logued = true;
+		document.getElementById("user-link").innerHTML = user.titulo + " " + user.nick;
 	}
 	com = "user.me(json)";
 	term.com(com,retorno);
@@ -69,8 +61,7 @@ user.logar = function(){
 	term.com(com,retorno);
 	console.log(com);
 }
-user.tPerfil = "<h1>{titulo} {nick}</h1><input type='button' value='Sair' onclick='page.popUp()'><input type='button' value='Cancelar' onclick='page.popUp()'>";
+user.tPerfil = "<h1>{titulo} {nick}</h1><input type='button' value='Cancelar' onclick='page.popUp()'>";
 user.tFormLogin = "<h1>Usuario Cloto</h1><label id='FormLogin-retorno'></label><form><label>nick/e-mail</label><input id='FormLogin-user'><label>senha</label><input id='FormLogin-pass'><input type='button' value='Logar' onclick='user.logar();'><input type='button' value='Cancelar' onclick='page.popUp()'></form>";
-
 
 console.log("user.js");

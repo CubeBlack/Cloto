@@ -16,6 +16,7 @@ page.loaded = function(){
 	sTerm.on();
 	term.on();
 	//------------------
+	page.search();
 	user.get();
 }
 //- - - - - PopUp
@@ -43,7 +44,7 @@ page.rDrop = function(msg){
 	console.log(msg);
 	page.search();
 }
-page.tFirstDado = "<dado onclick='page.novaNota()'><id>Novo Dado</id><valor><img src='resources/img/new.svg'></valor></dado>";
+page.tFirstDado = "<dado><id></id><user></user><valor>jurema</valor><tag><a onclick=''>#kkl, </a><a onclick=''>#zjdf, </a><a onclick='page.setQuery(\'gdfg\')'>#gdfg, </a></tag><editar><input type='button' value='Drop' onclick='page.drop(8)'><input type='button' value='Edit' onclick='page.editOpen(8)'></editar></dado>";
 page.notaform = "<div id=\"fNotaCabecario\"></div><form><label>Dado</label><textarea id=\"fNotaDado\"></textarea><label>Tags</label><textarea id=\"fNotaTag\"></textarea><input id=\"fNotaAplic\" onclick=\"\" value=\"Salvar\" type=\"button\"><input id=\"fNotaAplic\" onclick=\"page.popUp()\" value=\"Cancelar\" type=\"button\"></form>";
 page.loginform = "<form><label>Dado</label><textarea id=\"novaNotaDado\"></textarea><label>Tags</label><textarea id=\"novaNotaTag\"></textarea><input onclick=\"page.novaNotaAplic()\" value=\"Salvar\" type=\"button\"></form>";
 console.log("page.js");

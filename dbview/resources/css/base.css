@@ -2,13 +2,12 @@
 	margin:0;
 	padding:0;
 }
-
 a:hover{
 	color:red;
 	cursor:pointer;
 }
 body{
-
+	margin-top:100px;
 	background-image:url("../img/background.svg");
 }
 #content{
@@ -25,15 +24,32 @@ header{
 	border-bottom:1px solid black;
 }
 header h1{
-	font-size:20px;
+	font-size:0px;
 	display:inline;
+	padding-right:20px;
 }
-header input{
-	border-bottom: none;
-    border-top: none;
+#header-logo{
+	height:35px;
 }
 nav{
-	display:inline;
+	display:inline-block;
+	margin:4px;
+	padding:4px;
+}
+user{
+	position:fixed;
+	right:3px;
+	top:3px;
+	height:70px;
+}
+user img{
+	height:calc(100% - 12px);
+	border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+user img:hover{
+	background-color:red;
 }
 dado{
 	position:relative;
@@ -53,24 +69,15 @@ dado valor{
 	min-height:50px;
 	white-space:pre-wrap;
 }
-/*
-dado valor:hover{
-	overflow:scroll;
-	white-space:pre-wrap;
-}
-*/
 dado tag{
 	color:blue;
 }
-/*
-dado tag:hover{
-	color:red;
-	cursor:pointer;
-}
-*/
 dado editar{
 	display: block;
 	/*white-space:*/
+}
+dado img{
+	height:100px;
 }
 .submenu{
 	position:fixed;

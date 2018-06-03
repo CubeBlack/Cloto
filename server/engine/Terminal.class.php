@@ -17,6 +17,8 @@
 			$this->call();
 		}
 		function setLog(){
+			//por enquanto desativar o log
+			return;
 			$filename = 'engine/terminal.log';
 			if (!$handle = fopen($filename, 'a')) {
 				 echo "Não foi possível abrir o arquivo ($filename)";
@@ -39,18 +41,18 @@
 			$paramN = 0;
 			
 			for($i = 0; $i < strlen($comStr);$i++){
-				if($comStr[$i] == "("){
-					$tipoGet = "param";
-					$params[$paramN] = "";
-					$this->com->tipo = "function";
-					continue;
-				}
 				if($tipoGet == "nodes"){
 					if($comStr[$i] == '.'){
 						$nodeN++;
 						$nodes[$nodeN] = "";
 						continue;
 					}
+					if($comStr[$i] == "("){
+						$tipoGet = "param";
+						$params[$paramN] = "";
+						$this->com->tipo = "function";
+					continue;
+				}
 					$nodes[$nodeN] .= $comStr[$i];
 					continue;
 				}
